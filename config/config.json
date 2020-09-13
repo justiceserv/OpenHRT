@@ -1,0 +1,9 @@
+{
+  "token" : "Your Discord Token",
+  "prefix" : "!",
+  "uptimerobot" : "Your UptimeRobot API",
+  "embedcolor" : "#97db98",
+  "embedwarning" : "#b32750",
+  "weather" : "",
+  "owner" : "Your Discord ID"
+}
