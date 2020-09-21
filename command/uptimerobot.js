@@ -2,7 +2,7 @@ const Discord = require('Discord.js');
 const Config = require('/config/config.json');
 module.exports=
 {
-    message:function(argument)
+    conf:function(argument)
     {
         if(argument === "온")
         {
@@ -32,7 +32,14 @@ module.exports=
         }
         else
         {
-            
+            var OnEmbed = new Discord.MessageEmbed()
+                .setColor(`${Config.embedwarning}`)
+                .setTitle('제대로된 명령어를 입력해주세요!')
+                .setAuthor('OpenHRT', '', '')
+                .setImage('')
+                .setTimestamp()
+                .setFooter('OpenHRT');
+            return OnEmbed;
         }
     }
 }
