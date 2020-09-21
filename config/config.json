@@ -5,5 +5,6 @@
   "embedcolor" : "#97db98",
   "embedwarning" : "#b32750",
   "weather" : "",
-  "owner" : "Your Discord ID"
+  "owner" : "Your Discord ID",
+  "uptimerobot_stat" : "on"
 }
