@@ -23,6 +23,9 @@ client.on("message", async message =>{
       }
       else if(command === "업타임로봇")
       {
+        var argument = command.split(/\s+/); 
+        var uptimerobot = require('./command/uptimerobot.js');
+        message.channel.send(uptimerobot.conf(argument[1]));
       }
       else if(command === "날씨")
       {
