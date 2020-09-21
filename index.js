@@ -2,7 +2,15 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 const config = require("./config/config.json");
 const fs = require ('fs');
+const express = require('express');
+const bodyParser = require('body-parser');
+const app = express().use(bodyParser.json());
 
+app.listen(80, () => console.log('Webhook is ready & listening'));
+app.post('/', (req, res)=>{
+  var uptimerobot = require('./command/uptimerobot.js');
+  uptimerobot.posted(req.body); 
+});
 client.on("ready", ()=>{
   console.log("봇이 사용될 준비가 되었습니다!");
   client.user.setActivity(`${config.prefix}도움말`);
@@ -60,6 +68,10 @@ client.on("message", async message =>{
         }
         message.channel.send(isitdown.req(argument[1], config.embedcolor, config.embedwarning));
       }
+    }
+    if(message.channel.id === '757444747441864809')
+    {
+      
     }
   }
   else

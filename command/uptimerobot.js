@@ -1,5 +1,6 @@
 const Discord = require('Discord.js');
 const Config = require('/config/config.json');
+const fetch = require('node-fetch');
 module.exports=
 {
     conf:function(argument)
@@ -40,6 +41,18 @@ module.exports=
                 .setTimestamp()
                 .setFooter('OpenHRT');
             return OnEmbed;
+        }
+    },
+    posted:function(body)
+    {
+        const jsonbody = JSON.stringify(body);
+        if(jsonbody.up === "up")
+        {
+
+        }
+        else if(jsonbody.up === "down")
+        {
+            
         }
     }
 }
