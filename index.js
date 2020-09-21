@@ -7,20 +7,20 @@ const bodyParser = require('body-parser');
 const app = express().use(bodyParser.json());
 
 app.listen(80, () => console.log('Webhook is ready & listening'));
-app.post('/', (req, res)=>{
-  var uptimerobot = require('./command/uptimerobot.js');
-  uptimerobot.posted(req.body); 
-});
 client.on("ready", ()=>{
   console.log("봇이 사용될 준비가 되었습니다!");
   client.user.setActivity(`${config.prefix}도움말`);
 });
+app.get('/', (req, res) => {
+  var uptimerobot = require('./command/uptimerobot.js');
+  client.users.get(`${config.owner}`).send(uptimerobot.posted(req.body));
+})
 client.on('unhandledRejection', error => console.error('Uncaught Promise Rejection', error));
 client.on("message", async message =>{
   const args = message.content.slice(config.prefix.length).split();
-  const prefix = message.content.substring(0,1);
+  const prefix = message.content.substring(0,config.prefix.length);
   const command = args.shift().toLowerCase();
-  if(!message.guild) //respond when only DM come
+  if(!message.guild && message.author.id === config.owner) //respond when only DM come
   {
     if(prefix === config.prefix)
     {
@@ -41,6 +41,8 @@ client.on("message", async message =>{
       }
       else if(command === "prefix")
       {
+        var argument = command.split(/\s+/); 
+        var prefix = require('./command/prefix.js');
 
       }
       else if(command.startsWith("up"))
@@ -68,10 +70,6 @@ client.on("message", async message =>{
         }
         message.channel.send(isitdown.req(argument[1], config.embedcolor, config.embedwarning));
       }
-    }
-    if(message.channel.id === '757444747441864809')
-    {
-      
     }
   }
   else

@@ -48,11 +48,16 @@ module.exports=
         const jsonbody = JSON.stringify(body);
         if(jsonbody.up === "up")
         {
-
+            var OnEmbed = new Discord.MessageEmbed()
+                .setColor(`${Config.embedcolor}`)
+                .setTitle(`${jsonbody.name}`)
+                .setAuthor('OpenHRT', '', '')
+                .setDescription('')
+                .setImage('')
         }
         else if(jsonbody.up === "down")
         {
-            
+
         }
     }
 }
