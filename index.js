@@ -14,6 +14,7 @@ client.on("ready", ()=>{
 app.get('/', async (req, res) => {
   var uptimerobot = require('./command/uptimerobot.js');
   client.users.get(`${config.owner}`).send(uptimerobot.posted(req.body));
+  app.response('200');
 })
 client.on('unhandledRejection', error => console.error('Uncaught Promise Rejection', error));
 client.on("message", async message =>{

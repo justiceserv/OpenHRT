@@ -5,7 +5,7 @@ module.exports =
   {
     const helpembed = new Discord.MessageEmbed()
       .setColor(`${embedcolor}`)
-      .setTitle("도움말")
+      .setTitle('도움말')
       .setAuthor('OpenHRT', '', '')
       .addFields(
         {name: `${prefix}도움말`, value: '현재와 같은 도움말을 표시합니다!'},
