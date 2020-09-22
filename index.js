@@ -42,8 +42,8 @@ client.on("message", async message =>{
       else if(command === "prefix")
       {
         var argument = command.split(/\s+/); 
-        var prefix = require('./command/prefix.js');
-        message.channel.send(prefix.response(argument[1])); 
+        var prefixfunc = require('./command/prefix.js');
+        message.channel.send(prefixfunc.response(argument[1])); 
       }
       else if(command.startsWith("up"))
       {
