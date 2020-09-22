@@ -11,7 +11,7 @@ client.on("ready", ()=>{
   console.log("봇이 사용될 준비가 되었습니다!");
   client.user.setActivity(`${config.prefix}도움말`);
 });
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
   var uptimerobot = require('./command/uptimerobot.js');
   client.users.get(`${config.owner}`).send(uptimerobot.posted(req.body));
 })
@@ -43,7 +43,7 @@ client.on("message", async message =>{
       {
         var argument = command.split(/\s+/); 
         var prefix = require('./command/prefix.js');
-        return prefix.response(argument[1]); 
+        message.channel.send(prefix.response(argument[1])); 
       }
       else if(command.startsWith("up"))
       {
