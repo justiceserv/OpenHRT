@@ -1,6 +1,5 @@
 const Discord = require('Discord.js');
 const Config = require('/config/config.json');
-const fetch = require('node-fetch');
 module.exports=
 {
     conf:function(argument)
@@ -52,12 +51,29 @@ module.exports=
                 .setColor(`${Config.embedcolor}`)
                 .setTitle(`${jsonbody.name}`)
                 .setAuthor('OpenHRT', '', '')
-                .setDescription('')
+                .addFields(
+                    {name: `상태`, value: '정상작동 중입니다!'},
+                    {name: `상세정보`, value: `${jsonbody.moreinfo}`}
+                )
                 .setImage('')
+                .setTimestamp()
+                .setFooter('OpenHRT')
+            return OnEmbed;
         }
         else if(jsonbody.up === "down")
         {
-
+            var OnEmbed = new Discord.MessageEmbed()
+                .setColor(`${Config.embedwarning}`)
+                .setTitle(`${jsonbody.name}`)
+                .setAuthor('OpenHRT', '', '')
+                .addFields(
+                    {name: `상태`, value: '현재 문제가 발생한 것 같습니다!'},
+                    {name: `상세정보`, value: `${jsonbody.moreinfo}`}
+                )
+                .setImage('')
+                .setTimestamp()
+                .setFooter('OpenHRT')
+            return OnEmbed;
         }
     }
 }

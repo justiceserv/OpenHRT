@@ -43,7 +43,7 @@ client.on("message", async message =>{
       {
         var argument = command.split(/\s+/); 
         var prefix = require('./command/prefix.js');
-
+        return prefix.response(argument[1]); 
       }
       else if(command.startsWith("up"))
       {
